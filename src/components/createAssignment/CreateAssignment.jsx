@@ -1,12 +1,16 @@
 import { Helmet } from "react-helmet";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Link } from "react-router-dom";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 
 const CreateAssignment = () => {
+    const [startDate, setStartDate] = useState(new Date());
     const {user} = useContext(AuthContext)
     const handleAddAssignment = e => {
       e.preventDefault()
@@ -129,13 +133,15 @@ const CreateAssignment = () => {
       Seasonality
     </label>
     
-    <select className="select select-bordered join-item" name='seasonality' required>
+    {/* <select className="select select-bordered join-item" name='seasonality' required>
     <option disabled selected>Select Season</option>
       <option>Summer</option>
       <option>Winter</option>
       <option>Spring</option>
       <option>Autumn</option>
-    </select>
+    </select> */}
+
+<DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
       
       
       
