@@ -1,3 +1,6 @@
+
+
+import { useLoaderData } from "react-router-dom";
 import Feature from "../Feature/Feature";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
@@ -5,11 +8,18 @@ import Navbar from "../Navbar/Navbar";
 
 
 const Home = () => {
+    const assignment = useLoaderData()
     return (
         <div>
         <Navbar></Navbar>
         <Header></Header>
-        <Feature></Feature>
+        <div className=' grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:gap-10 md:gap-10 gap-4'>
+        {
+            assignment.map(feature=><Feature key={feature._id} feature={feature}></Feature>)
+        }
+        </div>
+       
+        
          <Footer></Footer>
         </div>
     );
