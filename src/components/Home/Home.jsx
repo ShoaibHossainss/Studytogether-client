@@ -5,6 +5,7 @@ import Feature from "../Feature/Feature";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Navbar from "../Navbar/Navbar";
+import Faq from "../faq/Faq";
 
 
 const Home = () => {
@@ -19,7 +20,8 @@ const Home = () => {
         }
         </div>
        
-        
+        <Faq></Faq>
+     
          <Footer></Footer>
         </div>
     );

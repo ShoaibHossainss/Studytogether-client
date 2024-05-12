@@ -23,6 +23,7 @@ const Assignment = () => {
                       const remaining = assignments.filter(assignment => assignment._id !== id);
                       setAssignments(remaining);
                   }
+                  
               })
       }
   }
