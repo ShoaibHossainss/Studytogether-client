@@ -24,8 +24,10 @@ const Assignment = () => {
         {`/view-assignment/${p._id}`}>
             <button className="btn btn-primary">View Assignment</button>
             </Link>
-            
-             <button className="btn btn-primary">Update</button>
+            <Link to={`/update/${p._id}`}>
+            <button className="btn btn-primary">Update</button>
+            </Link>
+             
             <button className="btn btn-primary">Delete</button>
            </div>
          </div>

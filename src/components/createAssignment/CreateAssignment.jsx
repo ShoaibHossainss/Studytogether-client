@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
-
+import Swal from "sweetalert2";
 import "react-datepicker/dist/react-datepicker.css";
 
 
@@ -30,38 +30,45 @@ const CreateAssignment = () => {
       const newAssignment = {title,thumbnail_image_url,marks,description,difficulty_level,due_date,
         user_name,email}
       console.log(newAssignment)
-      fetch('http://localhost:5000/assignment',{
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify(newAssignment)
-      })
-      .then(res=>res.json())
-      .then(data=>{
-        console.log(data)
-        if(data.insertedId){
-          Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, add it!"
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire({
-                title: "Added!",
-                text: "Your data has been added.",
-                icon: "success"
-              });
-            }
-          });
-          form.reset()
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, add it!"
+      }).then((result) => {
+        if (result.isConfirmed){
+            fetch('http://localhost:5000/assignment',{
+                method: 'POST',
+                headers: {
+                  'content-type': 'application/json'
+                },
+                body: JSON.stringify(newAssignment)
+              })
+              .then(res=>res.json())
+              .then(data=>{
+                console.log(data)
+                if(data.insertedId){
+                    Swal.fire({
+                        title: "Added!",
+                        text: "Your assignment has been added.",
+                        icon: "success"
+                      });
+                  form.reset()
+                }
+                
+              })
+         
         }
-        
-      })
+      });
+
+
+     
+      
+      
     }
       return (
           <div>
@@ -79,7 +86,7 @@ const CreateAssignment = () => {
   </label>
   <label className="input-group">
     
-    <input type="text" name='title' placeholder="Name" className="input input-bordered w-full" />
+    <input type="text" name='title' placeholder="Name" className="input input-bordered w-full" required/>
   </label>
 </div>
             <div className="form-control lg:w-1/2 lg:ml-4">
@@ -88,7 +95,7 @@ const CreateAssignment = () => {
   </label>
   <label className="input-group">
     
-    <input type="text" name='thumbnail_image_url' placeholder="Quantity" className="input input-bordered w-full" />
+    <input type="text" name='thumbnail_image_url' placeholder="Quantity" className="input input-bordered w-full" required />
   </label>
 </div>
             </div>
@@ -100,7 +107,7 @@ const CreateAssignment = () => {
     Difficulty Level
   </label>
   
-  <select className="select select-bordered join-item" name='country_name' required>
+  <select className="select select-bordered join-item" name='difficulty_level' required>
   <option disabled selected>Select Level</option>
     <option>Easy</option>
     <option>Medium</option>
@@ -117,27 +124,35 @@ const CreateAssignment = () => {
   </label>
   <label className="input-group">
     
-    <input type="text" name='marks' placeholder="Marks" className="input input-bordered w-full" />
+    <input type="text" name='marks' placeholder="Marks" className="input input-bordered w-full" required/>
   </label>
 </div>
             </div>
             <div className="form-control mb-3">
               <p className="pb-2">Description</p>
-              <textarea className="px-4 py-2 border-[1px] rounded-xl input-bordered" placeholder="Write A Short Description" name="description" id="" cols="30" rows="5"></textarea>
+              <textarea className="px-4 py-2 border-[1px] rounded-xl input-bordered" required placeholder="Write A Short Description" name="description" id="" cols="30" rows="5"></textarea>
             </div>
-            <div className='mb-3 lg:-ml-4'>
+            <div className='lg:flex mb-3'>
            
-     
-<div  className="form-control lg:ml-4 ">
- <label className="label">
-   <span className="label-text">User Email</span>
- </label>
- <label  className="input-group">
-   
-   <input disabled type="text" name='email' placeholder="Name" defaultValue={user.email}  className="input input-bordered w-full" />
- </label>
+            <div className="form-control lg:w-1/2 ">
+  <label className="label">
+    <span className="label-text">User Name</span>
+  </label>
+  <label className="input-group">
+    
+    <input disabled type="text"  name='user_name' defaultValue={user.displayName} placeholder="Quantity" className="input input-bordered w-full" />
+  </label>
 </div>
-           </div>
+<div className="form-control lg:w-1/2 lg:ml-4">
+  <label className="label">
+    <span className="label-text">User Email</span>
+  </label>
+  <label className="input-group">
+    
+    <input disabled type="text" name='email' placeholder="Name" defaultValue={user.email} className="input input-bordered w-full" />
+  </label>
+</div>
+            </div>
             <div className='mb-3 '>
            
      
@@ -147,7 +162,7 @@ const CreateAssignment = () => {
 </label>
 <label className="input-group">
   
-<DatePicker className="input input-bordered" selected={startDate} onChange={(date) => setStartDate(date)} />
+<DatePicker  required className="input input-bordered" selected={startDate} onChange={(date)  => setStartDate(date)} name="due_date" />
 </label>
 </div> 
            </div>

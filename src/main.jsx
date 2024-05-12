@@ -17,6 +17,7 @@ import MyAssignment from './components/myAssignment/MyAssignment.jsx';
 import Private from './components/Private/Private.jsx';
 import Assignment from './components/Assignment/Assignment.jsx';
 import ViewAssignment from './components/viewAssignment/ViewAssignment.jsx';
+import Update from './components/Update/Update.jsx';
 
 const router = createBrowserRouter([
   {
@@ -59,7 +60,14 @@ const router = createBrowserRouter([
       {
         path: '/my-assignment',
         element: <MyAssignment></MyAssignment>
-      }
+      },
+        {
+          path: '/update/:id',
+          element: <Private>
+            <Update></Update>
+          </Private>,
+          loader: ({params}) => fetch(`http://localhost:5000/assignment/${params.id}`)
+        }
     ]
   },
 ]);
