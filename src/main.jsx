@@ -44,7 +44,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/view-assignment/:id',
-        element: <ViewAssignment></ViewAssignment>,
+        element: <Private>
+          <ViewAssignment></ViewAssignment>
+        </Private>,
         loader: ()=> fetch('http://localhost:5000/assignment')
       },
       {

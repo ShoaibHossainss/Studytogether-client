@@ -1,10 +1,31 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
+import { useContext, useState } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 
 const Assignment = () => {
     const assignment = useLoaderData()
+    const {user} = useContext(AuthContext)
+    const [assignments, setAssignments] = useState([]);
+    const handleDelete = id => {
+      const proceed = confirm('Are You sure you want to delete');
+      if (proceed) {
+          fetch(`http://localhost:5000/delete/${id}`, {
+              method: 'DELETE'
+          })
+              .then(res => res.json())
+              .then(data => {
+                  console.log(data);
+                  if (data.deletedCount > 0) {
+                      alert('deleted successful');
+                      const remaining = assignments.filter(assignment => assignment._id !== id);
+                      setAssignments(remaining);
+                  }
+              })
+      }
+  }
     return (
         <div>
             
@@ -28,7 +49,9 @@ const Assignment = () => {
             <button className="btn btn-primary">Update</button>
             </Link>
              
-            <button className="btn btn-primary">Delete</button>
+           {
+            user?.email === p.email ?  <button onClick={()=>handleDelete(p._id)} className="btn btn-primary">Delete</button> :  <button onClick={()=>handleDelete(p._id)} className="btn btn-primary hidden">Delete</button>
+           }
            </div>
          </div>
        </div>)
