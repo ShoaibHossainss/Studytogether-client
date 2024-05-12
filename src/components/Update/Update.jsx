@@ -127,10 +127,10 @@ const Update = () => {
 </label>
 </div> 
            </div>
-            <input type="submit" value="Add" className="btn bg-[#007bff] text-white w-full mt-3 mb-3" />
+            <input type="submit" value="Update" className="btn bg-[#007bff] text-white w-full mt-3 mb-3" />
             </form>
             <Link to='/'>
-      <button className="btn bg-[#007bff] text-white mb-8 mt-8 items-center mx-auto flex">Go Back</button>
+      <button className="btn bg-[#007bff] text-white mb-8 mt-8 items-center mx-auto text-center">Go Back</button>
       </Link>
               <Footer></Footer>
           </div>
