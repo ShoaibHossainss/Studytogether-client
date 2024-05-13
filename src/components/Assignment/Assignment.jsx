@@ -7,8 +7,11 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const Assignment = () => {
     const assignment = useLoaderData()
+    console.log(assignment)
     const {user} = useContext(AuthContext)
-    const [assignments, setAssignments] = useState([]);
+    const [assignments, setAssignments] = useState(assignment);
+    const [sortRead,setReadSort] = useState(assignment)
+
     const handleDelete = id => {
       const proceed = confirm('Are You sure you want to delete');
       if (proceed) {
@@ -22,21 +25,52 @@ const Assignment = () => {
                       alert('deleted successful');
                       const remaining = assignments.filter(assignment => assignment._id !== id);
                       setAssignments(remaining);
+                      
                   }
                   
               })
       }
   }
+
+  const handleReadEasy= filter =>{
+    if(filter === 'difficulty_level'){
+      const storeCat = assignment.filter(assignment=> assignment.difficulty_level === 'Easy');
+      setReadSort(storeCat)
+    }
+
+}
+  const handleReadMedium= filter =>{
+    if(filter === 'difficulty_level'){
+      const storeCat = assignment.filter(assignment=> assignment.difficulty_level === 'Medium');
+      setReadSort(storeCat)
+    }
+
+}
+  const handleReadHard= filter =>{
+    if(filter === 'difficulty_level'){
+      const storeCat = assignment.filter(assignment=> assignment.difficulty_level === 'Hard');
+      setReadSort(storeCat)
+    }
+
+}
     return (
         <div>
             
          <Navbar></Navbar> 
+         <div className="dropdown dropdown-bottom">
+  <div tabIndex={0} role="button" className="btn m-1">Difficulty Level</div>
+  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+  <li onClick={()=>handleReadEasy('difficulty_level')}><a>Easy</a></li>
+  <li onClick={()=>handleReadMedium('difficulty_level')}><a>Medium</a></li>
+  <li onClick={()=>handleReadHard('difficulty_level')}><a>Hard</a></li>
+  </ul>
+</div>
          <p className="mb-4 mt-4 text-lg text-center">Here you can find
          <br />
           all the assignments</p>
          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mx-auto gap-10 mt-10 mb-10">
          {
-         assignment.map(p=><div key={p._id} className="card card-compact w-full bg-[#848ea0] shadow-xl">
+         sortRead.map(p=><div key={p._id} className="card card-compact w-full bg-[#848ea0] shadow-xl">
          <figure><img src={p.thumbnail_image_url} alt="Shoes" /></figure>
          <div className="card-body">
            <h2 className="card-title">{p.title}</h2>

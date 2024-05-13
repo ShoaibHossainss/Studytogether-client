@@ -6,6 +6,7 @@ const PendingAssignment = () => {
     return (
         <div>
          <Navbar></Navbar>
+         
          <Footer></Footer>   
         </div>
     );

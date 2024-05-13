@@ -16,7 +16,9 @@ const ViewAssignment = () => {
       const pdf = form.pdf.value;
       const description = form.description.value
       const email = user.email
-      const submitAssignment = {pdf,description,email}
+      const name = user.displayName
+      const status = 'pending'
+      const submitAssignment = {pdf,description,name,email,status}
       
       console.log(submitAssignment)
     }
