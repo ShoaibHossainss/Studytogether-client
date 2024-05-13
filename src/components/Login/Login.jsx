@@ -86,12 +86,14 @@ const handleLogin = e =>{
 
     return (
         <div className="" >
+          
           <Helmet>
                 
                 <title>Login</title>
                 
             </Helmet>
             <Navbar></Navbar>
+            <h3 className='text-center text-4xl mt-20'>Login To StudyTogether</h3>
             <div className="mx-auto lg:w-[430px] md:w-[430px] w-[365px] mb-10 mt-10  rounded-2xl bg-[#f3f6fd]">
             <form   onSubmit={handleLogin} >
       <div className="form-control px-10 pt-4">

@@ -2,7 +2,7 @@
 
 const Faq = () => {
     return (
-        <div className="mb-4 mt-4">
+        <div className="mb-4 mt-4 mx-auto ml-2">
             <h3 className="text-center mb-4 text-black text-4xl ">Frequently Asked Question</h3>
 <div className="collapse collapse-plus  bg-[#848ea0] mb-4">
   <input type="radio" name="my-accordion-3" defaultChecked /> 

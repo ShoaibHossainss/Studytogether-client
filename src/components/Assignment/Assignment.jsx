@@ -31,9 +31,12 @@ const Assignment = () => {
         <div>
             
          <Navbar></Navbar> 
-         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mx-auto gap-10">
+         <p className="mb-4 mt-4 text-lg text-center">Here you can find
+         <br />
+          all the assignments</p>
+         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mx-auto gap-10 mt-10 mb-10">
          {
-         assignment.map(p=><div key={p._id} className="card card-compact w-96 bg-base-100 shadow-xl">
+         assignment.map(p=><div key={p._id} className="card card-compact w-full bg-[#848ea0] shadow-xl">
          <figure><img src={p.thumbnail_image_url} alt="Shoes" /></figure>
          <div className="card-body">
            <h2 className="card-title">{p.title}</h2>

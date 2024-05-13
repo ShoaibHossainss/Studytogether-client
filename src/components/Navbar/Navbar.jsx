@@ -40,7 +40,7 @@ const handleLogOut = () =>{
   }
 
     return (
-        <div className="navbar   bg-[#333F48] mx-auto">
+        <div className="navbar ml-1   bg-[#007bff] mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -50,7 +50,7 @@ const handleLogOut = () =>{
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl text-white">Smithsonian</a>
+          <a className="btn btn-ghost text-xl text-white">StudyTogether</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

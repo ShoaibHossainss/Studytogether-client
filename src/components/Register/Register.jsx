@@ -61,8 +61,9 @@ const Register = () => {
                 
             </Helmet>
           <Navbar></Navbar>
+          <h3 className='text-center text-4xl mt-20'>Signup For StudyTogether</h3>
               <form onSubmit={handleRegister} className="mx-auto lg:w-[430px] md:w-[430px] w-[365px] mb-10 mt-10  rounded-2xl bg-[#f3f6fd]">
-                <h1 className="text-center text-black mb-2 pt-8">Register your account</h1>
+                
       <div className="form-control px-10 pt-2" >
           <label className="label">
             <span className="label-text">Name</span>

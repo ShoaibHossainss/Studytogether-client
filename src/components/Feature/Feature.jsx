@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 const Feature = ({feature}) => {
     const {_id,title,description,marks,thumbnail_image_url,difficulty_level,due_date} = feature;
     return (
-        <div className="card card-compact w-96 bg-base-100 shadow-xl">
+      
+        
+        <div className="card card-compact w-full shadow-xl rounded-2xl">
          <figure><img src={thumbnail_image_url} alt="Shoes" /></figure>
-         <div className="card-body">
+         <div className="card-body bg-[#848ea0] rounded-b-2xl">
            <h2 className="card-title">{title}</h2>
            <p>Description : {description}</p>
            <p>Marks : {marks}</p>
@@ -22,6 +24,8 @@ const Feature = ({feature}) => {
            </div>
          </div>
        </div>
+     
+
     );
 };
 
