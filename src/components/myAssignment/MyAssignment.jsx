@@ -2,11 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import { AuthContext } from "../Provider/AuthProvider";
+import AssignmentTable from "./AssignmentTable";
 
 
 const MyAssignment = () => {
     const {user} = useContext(AuthContext)
-    const [list,setList] = useState([])
+    const [lists,setList] = useState([])
     
     
     useEffect(()=>{
@@ -20,14 +21,15 @@ const MyAssignment = () => {
     return (
         <div>
         <Navbar></Navbar>
-        <div>
-           {
-            list.map(p=><div key={p._id}>
-                <h3>Marks: {p.marks}</h3>
-                <h3>Title: {p.title}</h3>
-            </div>)
-           }
-        </div> 
+        <div className="mb-20">
+            <h2 className="text-4xl text-center mt-10 mb-4">My Assignment: {lists.length}</h2>
+             {
+                lists.map(list=><AssignmentTable key={list._id} list={list}>
+            
+                </AssignmentTable>)
+             }
+                       
+        </div>
         <Footer></Footer>  
         </div>
     );

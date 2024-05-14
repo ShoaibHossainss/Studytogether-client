@@ -2,9 +2,9 @@
 
 const Faq = () => {
     return (
-        <div className="mb-4 mt-4 mx-auto ml-2">
-            <h3 className="text-center mb-4 text-black text-4xl ">Frequently Asked Question</h3>
-<div className="collapse collapse-plus  bg-[#848ea0] mb-4">
+        <div className="mb-4 mt-4 mx-auto ">
+            <h3 className="text-center mb-4 text-white text-4xl ">Frequently Asked Question</h3>
+<div className="collapse collapse-plus  bg-[#f8f3f0] mb-4">
   <input type="radio" name="my-accordion-3" defaultChecked /> 
   <div className="collapse-title text-xl font-medium">
   What is Study Together? What is it for and what can I do here?
@@ -16,7 +16,7 @@ Enter one of the study rooms to study, and let your neurons mirror other people�
 As you study on Study Together your progress will be tracked and gamified, and you will also be rewarded for keeping it up🏆.</p>
   </div>
 </div>
-<div className="collapse collapse-plus bg-[#848ea0] mb-4">
+<div className="collapse collapse-plus bg-[#f8f3f0] mb-4">
   <input type="radio" name="my-accordion-3" /> 
   <div className="collapse-title text-xl font-medium">
   Do I need to study a specific subject or go to a specific school?
@@ -25,7 +25,7 @@ As you study on Study Together your progress will be tracked and gamified, and y
     <p>No, you decide what and how long you want to study - as long as we are together 🙂 It also doesn’t matter whether you are in high school, college or university. You can choose to study in general rooms, in pre-university or university rooms, and on subject-specific channels. Since all our study rooms are open 24/7, it is totally up to you when and how often you would like to join.</p>
   </div>
 </div>
-<div className="collapse collapse-plus bg-[#848ea0] mb-4">
+<div className="collapse collapse-plus bg-[#f8f3f0] mb-4">
   <input type="radio" name="my-accordion-3" /> 
   <div className="collapse-title text-xl font-medium">
   I would like to join. How do I do that?
@@ -34,7 +34,7 @@ As you study on Study Together your progress will be tracked and gamified, and y
     <p>Perfect, you are welcome in the community! Great that you are giving it a shot. We currently offer study rooms accessed directly from our website using Zoom and also a Discord Server with different study channels. You can join them here: zoom or Discord (it is up to you if you want to try both or just one of the options). Should you have any questions after joining, feel free to drop us an email at help@studytogether.com or write one of the moderators in the chat 💬.</p>
   </div>
 </div>
-<div className="collapse collapse-plus bg-[#848ea0] mb-4">
+<div className="collapse collapse-plus bg-[#f8f3f0] mb-4">
   <input type="radio" name="my-accordion-3" /> 
   <div className="collapse-title text-xl font-medium">
   Who is behind Study Together and what are you trying to accomplish?

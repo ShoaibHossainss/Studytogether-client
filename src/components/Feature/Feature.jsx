@@ -7,9 +7,9 @@ const Feature = ({feature}) => {
     return (
       
         
-        <div className="card card-compact w-full shadow-xl rounded-2xl">
+        <div className="card card-compact w-full  rounded-2xl">
          <figure><img src={thumbnail_image_url} alt="Shoes" /></figure>
-         <div className="card-body bg-[#848ea0] rounded-b-2xl">
+         <div className="card-body bg-[#f8f3f0] rounded-b-2xl">
            <h2 className="card-title">{title}</h2>
            <p>Description : {description}</p>
            <p>Marks : {marks}</p>
@@ -18,7 +18,7 @@ const Feature = ({feature}) => {
            <div className="card-actions">
             <Link to=
         {`/view-assignment/${_id}`}>
-            <button className="btn btn-primary">View Assignment</button>
+            <button className="btn text-white bg-blue-500 border-none">View Assignment</button>
             </Link>
           
            </div>

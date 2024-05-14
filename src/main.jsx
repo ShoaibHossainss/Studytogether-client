@@ -57,7 +57,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/pending-assignment',
-        element: <PendingAssignment></PendingAssignment>
+        element: <PendingAssignment></PendingAssignment>,
+        loader: ()=> fetch('http://localhost:5000/assignment')
       },
       {
         path: '/my-assignment',
@@ -76,7 +77,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   
-    <div className='lg:w-[1320px] md:w-full w-full mx-auto'>
+    <div className='bg-[#aba98c] lg:w-[1330px]  md:w-full w-full mx-auto'>
  <AuthProvider>
      <RouterProvider router={router} />
      </AuthProvider>,

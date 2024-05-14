@@ -57,7 +57,11 @@ const Assignment = () => {
         <div>
             
          <Navbar></Navbar> 
-         <div className="dropdown dropdown-bottom">
+         
+         <p className="mb-4 mt-4 text-white text-lg text-center">Here you can find
+         <br />
+          all the assignments</p>
+          <div className="dropdown dropdown-bottom text-center mx-auto items-center justify-center flex">
   <div tabIndex={0} role="button" className="btn m-1">Difficulty Level</div>
   <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
   <li onClick={()=>handleReadEasy('difficulty_level')}><a>Easy</a></li>
@@ -65,12 +69,9 @@ const Assignment = () => {
   <li onClick={()=>handleReadHard('difficulty_level')}><a>Hard</a></li>
   </ul>
 </div>
-         <p className="mb-4 mt-4 text-lg text-center">Here you can find
-         <br />
-          all the assignments</p>
          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mx-auto gap-10 mt-10 mb-10">
          {
-         sortRead.map(p=><div key={p._id} className="card card-compact w-full bg-[#848ea0] shadow-xl">
+         sortRead.map(p=><div key={p._id} className="card card-compact w-full bg-[#f8f3f0] shadow-xl">
          <figure><img src={p.thumbnail_image_url} alt="Shoes" /></figure>
          <div className="card-body">
            <h2 className="card-title">{p.title}</h2>
@@ -81,14 +82,14 @@ const Assignment = () => {
            <div className="card-actions">
             <Link to=
         {`/view-assignment/${p._id}`}>
-            <button className="btn btn-primary">View Assignment</button>
+            <button className="btn bg-blue-500 text-white">View Assignment</button>
             </Link>
             <Link to={`/update/${p._id}`}>
-            <button className="btn btn-primary">Update</button>
+            <button className="btn bg-blue-500 text-white">Update</button>
             </Link>
              
            {
-            user?.email === p.email ?  <button onClick={()=>handleDelete(p._id)} className="btn btn-primary">Delete</button> :  <button onClick={()=>handleDelete(p._id)} className="btn btn-primary hidden">Delete</button>
+            user?.email === p.email ?  <button onClick={()=>handleDelete(p._id)} className="btn bg-blue-500 text-white">Delete</button> :  <button onClick={()=>handleDelete(p._id)} className="btn bg-blue-500 hidden text-white">Delete</button>
            }
            </div>
          </div>

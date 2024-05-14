@@ -15,8 +15,8 @@ const Home = () => {
         <Navbar></Navbar>
         <Header></Header>
         <div>
-        <h3 className="text-center text-2xl">Feature Section</h3>
-        <p className="text-center mt-2 mb-2">Here you can see all the assignment
+        <h3 className="text-center text-white text-2xl">Feature Section</h3>
+        <p className="text-center text-white mt-2 mb-2">Here you can see all the assignment
             <br />
              related information</p>
         <div className='mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:gap-10 md:gap-10 gap-4 '>

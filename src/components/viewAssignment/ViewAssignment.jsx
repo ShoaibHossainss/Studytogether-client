@@ -1,29 +1,57 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import Footer from "../Footer/Footer";
+import Navbar from "../Navbar/Navbar";
 
 
 const ViewAssignment = () => {
   const {user} = useContext(AuthContext)
+  const [bookings, setBookings] = useState([]);
     const assignments = useLoaderData()
     const {id} = useParams();
     const assignment = assignments.find(assignment=>assignment._id===id)
     console.log(assignment)
+
+   
+
    
     const handleSubmitAssignment = e =>{
       e.preventDefault()
       const form = e.target;
       const pdf = form.pdf.value;
-      const description = form.description.value
+      const notes = form.notes.value
       const email = user.email
       const name = user.displayName
       const status = 'pending'
-      const submitAssignment = {pdf,description,name,email,status}
+      const submitAssignment = {pdf,notes,name,email,status}
       
       console.log(submitAssignment)
+
+      fetch(`http://localhost:5000/my-assignment/${id}`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(submitAssignment)
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.modifiedCount > 0) {
+                // update state
+                const remaining = bookings.filter(booking => booking._id !== id);
+                const updated = bookings.find(booking => booking._id === id);
+                updated.status = 'pending'
+                const newBookings = [updated, ...remaining];
+                setBookings(newBookings);
+            }
+        })
     }
     return (
-        <div className="lg:grid lg:grid-cols-2 lg:mx-auto lg:mt-16 mt-8 mb-8">
+       <div>
+        <Navbar></Navbar>
+         <div className="lg:grid lg:grid-cols-2 lg:mx-auto lg:mt-16 mt-8 mb-8 bg-[#aba98c]">
         <div className=" bg-[#1313130D] rounded-2xl lg:ml-3">
         <img className="p-10 px-4 lg:mb-1 mb-10" src={assignment.thumbnail_image_url} alt="" />
         </div>
@@ -45,11 +73,11 @@ const ViewAssignment = () => {
      <div>
    
    <Link to='/'>
-      <button className="btn bg-[#007bff] text-white mr-2">Home</button>
+      <button className="btn border-none bg-[#007bff] text-white mr-2">Home</button>
       </Link>
    {/* <button className="btn bg-[#007bff] text-white ">Take Assignment</button> */}
    {/* Open the modal using document.getElementById('ID').showModal() method */}
-<button className="btn bg-[#007bff] text-white" onClick={()=>document.getElementById('my_modal_5').showModal()}>Take Assignment</button>
+<button className="btn bg-[#007bff] border-none text-white" onClick={()=>document.getElementById('my_modal_5').showModal()}>Take Assignment</button>
 <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
   <div className="modal-box">
   <form onSubmit={handleSubmitAssignment}>
@@ -66,8 +94,8 @@ const ViewAssignment = () => {
            
 
             <div className="form-control mb-3">
-              <p className="pb-2">Description</p>
-              <textarea className="px-4 py-2 border-[1px] rounded-xl input-bordered" placeholder="Write A Short Description" name="description" id="" cols="30" rows="5"></textarea>
+              <p className="pb-2">Notes</p>
+              <textarea className="px-4 py-2 border-[1px] rounded-xl input-bordered" placeholder="Write A Short Description" name="notes" id="" cols="30" rows="5"></textarea>
             </div>
             <input type="submit" value="Submit" className="btn bg-[#007bff] text-white w-full mt-3 mb-3" />
   </form>
@@ -86,8 +114,11 @@ const ViewAssignment = () => {
       
       </div>
       
-      
+     
       </div>
+      <Footer></Footer>
+       </div>
+      
     );
 };
 

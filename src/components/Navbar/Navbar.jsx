@@ -7,18 +7,18 @@ import { AuthContext } from "../Provider/AuthProvider";
 const Navbar = () => {
   const {user,logOut} = useContext(AuthContext)
     const links = <>
-             <li><NavLink className={({isActive})=>isActive ? ' bg-black text-[#ffcd00] rounded-md font-sans text-lg' : ' font-sans text-lg text-white'} to='/'>Home</NavLink></li>
-             <li><NavLink className={({isActive})=>isActive ? ' bg-black text-[#ffcd00] rounded-md font-sans text-lg' : ' font-sans text-lg text-white'} to='/assignments'>Assignments</NavLink></li>
+             <li><NavLink className={({isActive})=>isActive ? ' bg-black text-[#ffcd00] rounded-md font-sans text-lg' : ' font-sans text-lg text-green-500'} to='/'>Home</NavLink></li>
+             <li><NavLink className={({isActive})=>isActive ? ' bg-black text-[#ffcd00] rounded-md font-sans text-lg' : ' font-sans text-lg text-green-500'} to='/assignments'>Assignments</NavLink></li>
             
              { user?.email ?  <>
-            <li><NavLink className={({isActive})=>isActive ? ' bg-black text-[#ffcd00] rounded-md font-sans text-lg' : ' font-sans text-lg text-white'} to="/create-assignment">Create Assignments</NavLink></li>
+            <li><NavLink className={({isActive})=>isActive ? ' bg-black text-[#ffcd00] rounded-md font-sans text-lg' : ' font-sans text-lg text-green-500'} to="/create-assignment">Create Assignments</NavLink></li>
             
-            <li><NavLink className={({isActive})=>isActive ? ' bg-black text-[#ffcd00] rounded-md font-sans text-lg' : ' font-sans text-lg text-white'} to="/pending-assignment">Pending Assignments</NavLink></li>
+            <li><NavLink className={({isActive})=>isActive ? ' bg-black text-[#ffcd00] rounded-md font-sans text-lg' : ' font-sans text-lg text-green-500'} to="/pending-assignment">Pending Assignments</NavLink></li>
            
         </> 
         : <>
-        <li> <NavLink className={({isActive})=>isActive ? ' bg-black text-[#ffcd00] rounded-md font-sans text-lg' : ' font-sans text-lg text-white'} to="/login">Login</NavLink> </li>
-        <li> <NavLink className={({isActive})=>isActive ? ' bg-black text-[#ffcd00] rounded-md font-sans text-lg' : ' font-sans text-lg text-white'} to="/register">Register</NavLink> </li>
+        <li> <NavLink className={({isActive})=>isActive ? ' bg-black text-[#ffcd00] rounded-md font-sans text-lg' : ' font-sans text-lg text-green-500'} to="/login">Login</NavLink> </li>
+        <li> <NavLink className={({isActive})=>isActive ? ' bg-black text-[#ffcd00] rounded-md font-sans text-lg' : ' font-sans text-lg text-green-500'} to="/register">Register</NavLink> </li>
         
         </>
        }
@@ -40,7 +40,7 @@ const handleLogOut = () =>{
   }
 
     return (
-        <div className="navbar ml-1   bg-[#007bff] mx-auto">
+        <div className="navbar    bg-[#5c5146] mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -50,7 +50,7 @@ const handleLogOut = () =>{
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl text-white">StudyTogether</a>
+          <a className="btn btn-ghost text-xl text-green-500">StudyTogether</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -72,12 +72,12 @@ const handleLogOut = () =>{
         
        </div>
      </div>
-     <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 right-0">
+     <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content rounded-box w-52 right-0 bg-[#f8f3f0] text-center">
       
-       <li className="uppercase">{user.displayName}</li>
-       <li className="bg-[#007bff] text-white font-sans lg:font-semibold lg:text-lg  rounded-lg"><Link to="/my-assignment">My Attempted Assignments</Link></li>
+       <li className="uppercase text-green-500">{user.displayName}</li>
+       <li className="bg-[#f8f3f0] text-green-500 lg:ml-10 font-sans lg:font-semibold lg:text-lg  rounded-lg"><Link to="/my-assignment">My Attempted Assignments</Link></li>
        
-       <button onClick={handleLogOut} className="btn bg-[#007bff] text-white font-sans lg:font-semibold lg:text-lg  rounded-lg">Sign Out</button>
+       <li onClick={handleLogOut} className="btn bg-[#f8f3f0] text-green-500 font-sans lg:font-semibold lg:text-lg  rounded-lg">Sign Out</li>
      </ul>
    </div>
    
