@@ -3,6 +3,7 @@ import { Link, useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
+import { toast } from "react-toastify";
 
 
 const ViewAssignment = () => {
@@ -22,31 +23,31 @@ const ViewAssignment = () => {
       const pdf = form.pdf.value;
       const notes = form.notes.value
       const email = user.email
+      const ownerEmail = assignment.email
       const name = user.displayName
       const status = 'pending'
-      const submitAssignment = {pdf,notes,name,email,status}
+      const assignment_id = assignment._id
+      const submitAssignment = {pdf,notes,name,email,status,ownerEmail,assignment_id}
       
       console.log(submitAssignment)
 
-      fetch(`https://assignment-11-server-seven-bice.vercel.app/my-assignment/${id}`, {
-        method: 'PUT',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(submitAssignment)
-    })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if (data.modifiedCount > 0) {
-                // update state
-                // const remaining = bookings.filter(booking => booking._id !== id);
-                // const updated = bookings.find(booking => booking._id === id);
-                // updated.status = 'pending'
-                // const newBookings = [updated, ...remaining];
-                // setBookings(newBookings);
-            }
-        })
+      fetch('https://assignment-11-server-seven-bice.vercel.app/submitted',{
+                method: 'POST',
+                headers: {
+                  'content-type': 'application/json'
+                },
+                body: JSON.stringify(submitAssignment)
+              })
+              .then(res=>res.json())
+              .then(data=>{
+                console.log(data)
+                if(data.insertedId){
+                    alert('submiited')
+                  form.reset()
+                }
+                
+              })
+         
     }
     return (
        <div>

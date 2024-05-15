@@ -57,12 +57,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/pending-assignment',
-        element: <PendingAssignment></PendingAssignment>,
-        loader: ()=> fetch('https://assignment-11-server-seven-bice.vercel.app/assignment')
+        element: <Private>
+          <PendingAssignment></PendingAssignment>
+        </Private>,
       },
       {
         path: '/my-assignment',
-        element: <MyAssignment></MyAssignment>
+        element: <Private>
+          <MyAssignment></MyAssignment>
+        </Private>
       },
         {
           path: '/update/:id',

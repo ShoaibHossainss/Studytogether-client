@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { FaGoogle,FaRegEye } from "react-icons/fa";
 
 import Footer from '../Footer/Footer';
@@ -150,7 +150,7 @@ const handleLogin = e =>{
               </button>
               </Link></p>
       <Footer></Footer>
-      
+      <ToastContainer></ToastContainer>
  
     </div>
     );
