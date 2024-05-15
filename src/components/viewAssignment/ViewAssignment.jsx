@@ -4,6 +4,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 
 const ViewAssignment = () => {
@@ -42,7 +43,7 @@ const ViewAssignment = () => {
               .then(data=>{
                 console.log(data)
                 if(data.insertedId){
-                    alert('submiited')
+                    toast.success('Submission Successful')
                   form.reset()
                 }
                 
@@ -51,6 +52,9 @@ const ViewAssignment = () => {
     }
     return (
        <div>
+         <Helmet>
+                <title>View Details</title>
+            </Helmet>
         <Navbar></Navbar>
          <div className="lg:grid lg:grid-cols-2 lg:mx-auto lg:mt-16 mt-8 mb-8 bg-[#aba98c]">
         <div className=" bg-[#1313130D] rounded-2xl lg:ml-3">

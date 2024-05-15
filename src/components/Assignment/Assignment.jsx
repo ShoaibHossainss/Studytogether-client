@@ -3,6 +3,8 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 
 const Assignment = () => {
@@ -14,6 +16,7 @@ const Assignment = () => {
 
     const handleDelete = id => {
       const proceed = confirm('Are You sure you want to delete');
+    
       if (proceed) {
           fetch(`https://assignment-11-server-seven-bice.vercel.app/delete/${id}`, {
               method: 'DELETE'
@@ -22,7 +25,7 @@ const Assignment = () => {
               .then(data => {
                   console.log(data);
                   if (data.deletedCount > 0) {
-                      alert('deleted successful');
+                      toast.success('deleted successful');
                       const remaining = assignments.filter(assignment => assignment._id !== id);
                       setAssignments(remaining);
                       
@@ -55,6 +58,9 @@ const Assignment = () => {
 }
     return (
         <div>
+           <Helmet>
+                <title>All Assignments</title>
+            </Helmet>
             
          <Navbar></Navbar> 
          
@@ -104,3 +110,4 @@ const Assignment = () => {
 };
 
 export default Assignment;
+

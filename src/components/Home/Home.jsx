@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Navbar from "../Navbar/Navbar";
 import Faq from "../faq/Faq";
+import { Helmet } from "react-helmet";
 
 
 const Home = () => {
@@ -13,6 +14,9 @@ const Home = () => {
     console.log(features)
     return (
         <div>
+             <Helmet>
+                <title>Readtogether</title>
+            </Helmet>
         <Navbar></Navbar>
         <Header></Header>
         <div>

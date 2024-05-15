@@ -18,6 +18,7 @@ import Private from './components/Private/Private.jsx';
 import Assignment from './components/Assignment/Assignment.jsx';
 import ViewAssignment from './components/viewAssignment/ViewAssignment.jsx';
 import Update from './components/Update/Update.jsx';
+import {HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
@@ -81,9 +82,11 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   
     <div className='bg-[#aba98c] lg:w-[1330px]  md:w-full w-full mx-auto'>
- <AuthProvider>
-     <RouterProvider router={router} />
-     </AuthProvider>,
+  <HelmetProvider>
+    <AuthProvider>
+    <RouterProvider router={router} />
+    </AuthProvider>
+    </HelmetProvider>
     </div>
     
   
