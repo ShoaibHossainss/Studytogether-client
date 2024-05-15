@@ -11,7 +11,7 @@ const MyAssignment = () => {
     
     
     useEffect(()=>{
-        fetch(`http://localhost:5000/my-assignment/${user?.email}`)
+        fetch(`https://assignment-11-server-seven-bice.vercel.app/my-assignment/${user?.email}`)
         .then(res=>res.json())
         .then(data=>{
             setList(data)

@@ -15,7 +15,7 @@ const Assignment = () => {
     const handleDelete = id => {
       const proceed = confirm('Are You sure you want to delete');
       if (proceed) {
-          fetch(`http://localhost:5000/delete/${id}`, {
+          fetch(`https://assignment-11-server-seven-bice.vercel.app/delete/${id}`, {
               method: 'DELETE'
           })
               .then(res => res.json())

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Footer from "../Footer/Footer";
@@ -7,7 +7,7 @@ import Navbar from "../Navbar/Navbar";
 
 const ViewAssignment = () => {
   const {user} = useContext(AuthContext)
-  const [bookings, setBookings] = useState([]);
+  // const [bookings, setBookings] = useState([]);
     const assignments = useLoaderData()
     const {id} = useParams();
     const assignment = assignments.find(assignment=>assignment._id===id)
@@ -28,7 +28,7 @@ const ViewAssignment = () => {
       
       console.log(submitAssignment)
 
-      fetch(`http://localhost:5000/my-assignment/${id}`, {
+      fetch(`https://assignment-11-server-seven-bice.vercel.app/my-assignment/${id}`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json'
@@ -40,11 +40,11 @@ const ViewAssignment = () => {
             console.log(data);
             if (data.modifiedCount > 0) {
                 // update state
-                const remaining = bookings.filter(booking => booking._id !== id);
-                const updated = bookings.find(booking => booking._id === id);
-                updated.status = 'pending'
-                const newBookings = [updated, ...remaining];
-                setBookings(newBookings);
+                // const remaining = bookings.filter(booking => booking._id !== id);
+                // const updated = bookings.find(booking => booking._id === id);
+                // updated.status = 'pending'
+                // const newBookings = [updated, ...remaining];
+                // setBookings(newBookings);
             }
         })
     }

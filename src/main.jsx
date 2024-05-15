@@ -1,6 +1,6 @@
-import React from 'react'
+
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+
 import './index.css'
 import {
   createBrowserRouter,
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: ()=> fetch('http://localhost:5000/assignment')
+        loader: ()=> fetch('https://assignment-11-server-seven-bice.vercel.app/assignment')
       },
       {
         path: '/login',
@@ -40,14 +40,14 @@ const router = createBrowserRouter([
       {
         path: '/assignments',
         element: <Assignment></Assignment>,
-        loader: ()=> fetch('http://localhost:5000/assignment')
+        loader: ()=> fetch('https://assignment-11-server-seven-bice.vercel.app/assignment')
       },
       {
         path: '/view-assignment/:id',
         element: <Private>
           <ViewAssignment></ViewAssignment>
         </Private>,
-        loader: ()=> fetch('http://localhost:5000/assignment')
+        loader: ()=> fetch('https://assignment-11-server-seven-bice.vercel.app/assignment')
       },
       {
         path: '/create-assignment',
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
       {
         path: '/pending-assignment',
         element: <PendingAssignment></PendingAssignment>,
-        loader: ()=> fetch('http://localhost:5000/assignment')
+        loader: ()=> fetch('https://assignment-11-server-seven-bice.vercel.app/assignment')
       },
       {
         path: '/my-assignment',
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
           element: <Private>
             <Update></Update>
           </Private>,
-          loader: ({params}) => fetch(`http://localhost:5000/assignment/${params.id}`)
+          loader: ({params}) => fetch(`https://assignment-11-server-seven-bice.vercel.app/assignment/${params.id}`)
         }
     ]
   },

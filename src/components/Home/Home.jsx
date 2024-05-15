@@ -9,7 +9,8 @@ import Faq from "../faq/Faq";
 
 
 const Home = () => {
-    const assignment = useLoaderData()
+    const features = useLoaderData()
+    console.log(features)
     return (
         <div>
         <Navbar></Navbar>
@@ -20,10 +21,11 @@ const Home = () => {
             <br />
              related information</p>
         <div className='mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:gap-10 md:gap-10 gap-4 '>
+            {
+                features.map(feature=><Feature key={feature._id} feature={feature}></Feature>)
+            }
        
-       {
-           assignment.map(feature=><Feature key={feature._id} feature={feature}></Feature>)
-       }
+     
        </div>
         </div>
         
