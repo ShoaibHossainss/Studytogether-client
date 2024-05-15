@@ -43,7 +43,7 @@ const ViewAssignment = () => {
               .then(data=>{
                 console.log(data)
                 if(data.insertedId){
-                    toast.success('Submission Successful')
+                  toast.success('Submission Successful')
                   form.reset()
                 }
                 
