@@ -5,6 +5,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 const AssignmentTable = ({list,handleBookingConfirm}) => {
     const {user} = useContext(AuthContext)
    const {thumbnail_image_url,status,marks,title,_id} = list
+   console.log(list)
     return (
         <div className="overflow-x-auto">
         <table className="table">

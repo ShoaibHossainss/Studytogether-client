@@ -21,6 +21,9 @@ const ViewAssignment = () => {
     const handleSubmitAssignment = e =>{
       e.preventDefault()
       const form = e.target;
+      const title = assignment.title
+      const marks = assignment.marks
+      const thumbnail_image_url = assignment.thumbnail_image_url
       const pdf = form.pdf.value;
       const notes = form.notes.value
       const email = user.email
@@ -28,7 +31,7 @@ const ViewAssignment = () => {
       const name = user.displayName
       const status = 'pending'
       const assignment_id = assignment._id
-      const submitAssignment = {pdf,notes,name,email,status,ownerEmail,assignment_id}
+      const submitAssignment = {pdf,thumbnail_image_url,marks,title,notes,name,email,status,ownerEmail,assignment_id}
       
       console.log(submitAssignment)
 

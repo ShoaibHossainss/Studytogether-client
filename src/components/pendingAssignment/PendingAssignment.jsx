@@ -1,4 +1,4 @@
-import { useLoaderData, useParams} from "react-router-dom";
+
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import { useContext, useEffect, useState,} from "react";
@@ -17,7 +17,7 @@ const PendingAssignment = () => {
     })
    },[])
 
-   console.log(pending.length)
+   console.log(pending)
 
    
     const handleSubmitAssignment = e =>{
@@ -33,11 +33,8 @@ const PendingAssignment = () => {
       console.log(submitAssignment)
 
       fetch(`https://assignment-11-server-seven-bice.vercel.app/pending-assignment/${status}`, {
-        method: 'PUT',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(submitAssignment)
+        method: 'GET',
+       
     })
         .then(res => res.json())
         .then(data => {
@@ -56,74 +53,79 @@ const PendingAssignment = () => {
     return (
         <div>
          <Navbar></Navbar>
-      <div className="mt-16 mb-16">
-          <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Assignment Marks</th>
-              <th>PDF Link</th>
-              <th>Notes</th>
-              <th>Name</th>
-            </tr>
-          </thead>
-          <tbody >
-                        <tr>
-                          
-                          
-                          <td>{assignments.title}</td>
-                          <td>{assignments.marks}</td>
-                          <td>{assignments.pdf}</td>
-                          <td>{assignments.notes}</td>
-                          <td>{assignments.user_name}</td>
-                          <td><button className="btn border-none bg-[#007bff] text-white" onClick={()=>document.getElementById('my_modal_5').showModal()}>Take Assignment</button>
+        
+     {
+      pending.map(p=> <div key={p._id} className="mt-16 mb-16">
+      <div className="overflow-x-auto">
+    <table className="table">
+      {/* head */}
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Name</th>
+          <th>Assignment Marks</th>
+          <th>PDF Link</th>
+          <th>Notes</th>
+          <th>Owner Email</th>
+        </tr>
+      </thead>
+      <tbody >
+                    <tr>
+                      
+                      
+                      <td>{p.title}</td>
+                      <td>{p.name}</td>
+                      <td>{p.marks}</td>
+                      <td>{p.pdf}</td>
+                      <td>{p.notes}</td>
+                      <td>{p.email}</td>
+                      <td><button className="btn border-none bg-[#007bff] text-white" onClick={()=>document.getElementById('my_modal_5').showModal()}>Take Assignment</button>
 <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-  <div className="modal-box">
-  <form onSubmit={handleSubmitAssignment}>
-            <div className='lg:flex mb-4'>
-            <div className="form-control lg:w-1/2 ">
-  <label className="label">
-    <span className="label-text">Marks</span>
-  </label>
-  <label className="input-group">
-    
-    <input type="text" name='obtained_marks' placeholder="Give Marks" className="input input-bordered w-full" required/>
-  </label>
+<div className="modal-box">
+<form onSubmit={handleSubmitAssignment}>
+        <div className='lg:flex mb-4'>
+        <div className="form-control lg:w-1/2 ">
+<label className="label">
+<span className="label-text">Marks</span>
+</label>
+<label className="input-group">
+
+<input type="text" name='obtained_marks' placeholder="Give Marks" className="input input-bordered w-full" required/>
+</label>
 </div>
-            <div className="form-control lg:w-1/2 lg:ml-4">
-  <label className="label">
-    <span className="label-text">Feedback</span>
-  </label>
-  <label className="input-group">
-    
-    <input type="text" name='feedback' placeholder='Give Feedback here' className="input input-bordered w-full" required/>
-  </label>
+        <div className="form-control lg:w-1/2 lg:ml-4">
+<label className="label">
+<span className="label-text">Feedback</span>
+</label>
+<label className="input-group">
+
+<input type="text" name='feedback' placeholder='Give Feedback here' className="input input-bordered w-full" required/>
+</label>
 </div>
-            </div>
-            <input type="submit" value="Submit" className="btn bg-[#007bff] text-white w-full mt-3 mb-3" />
+        </div>
+        <input type="submit" value="Submit" className="btn bg-[#007bff] text-white w-full mt-3 mb-3" />
+</form>
+        
+<div className="modal-action">
+  <form method="dialog">
+    {/* if there is a button in form, it will close the modal */}
+    <button className="btn">Close</button>
   </form>
-            
-    <div className="modal-action">
-      <form method="dialog">
-        {/* if there is a button in form, it will close the modal */}
-        <button className="btn">Close</button>
-      </form>
-    </div>
-  </div>
+</div>
+</div>
 </dialog>
-  </td>
-                          
-                          
-                       
-                        </tr>
-                      </tbody>
-          
-        </table>
-      </div>
+</td>
+                      
+                      
+                   
+                    </tr>
+                  </tbody>
       
-      </div>
+    </table>
+  </div>
+  
+  </div>)
+     }
          <Footer></Footer>   
         </div>
     );
