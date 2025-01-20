@@ -3,6 +3,7 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import { useContext, useEffect, useState,} from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 
 const PendingAssignment = () => {
@@ -52,6 +53,9 @@ const PendingAssignment = () => {
    
     return (
         <div>
+           <Helmet>
+                <title>Pending Assignment</title>
+            </Helmet>
          <Navbar></Navbar>
         
      {
