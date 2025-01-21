@@ -27,7 +27,7 @@ const MyAssignment = () => {
             </Helmet>
         <Navbar></Navbar>
         <div className="mb-20">
-            <h2 className="text-4xl text-center mt-10 mb-4">My Submitted Assignment: {lists.length}</h2>
+            <h2 className="text-2xl text-white text-center mt-10 mb-4">My Submitted Assignment: {lists.length}</h2>
              {
                 lists.map(list=><AssignmentTable key={list._id} list={list}>
             

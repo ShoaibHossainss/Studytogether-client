@@ -78,6 +78,9 @@ const CreateAssignment = () => {
                   
               </Helmet>
             <Navbar></Navbar>
+            <h3 className="text-center text-white text-2xl mt-4 mb-4">
+  Create A New Assignment
+</h3>
             <form onSubmit={handleAddAssignment} className="mx-auto lg:w-[1320px] md:w-[750px] w-[365px] mb-10 mt-10  rounded-2xl bg-white p-4">
             <div className='lg:flex mb-4'>
             <div className="form-control lg:w-1/2 ">

@@ -57,6 +57,11 @@ const PendingAssignment = () => {
                 <title>Pending Assignment</title>
             </Helmet>
          <Navbar></Navbar>
+         <div>
+         <h3 className="text-center text-white text-2xl mt-4 mb-4">
+  Pending Assignments
+</h3>
+         </div>
         
      {
       pending.map(p=> <div key={p._id} className="mt-16 mb-16">

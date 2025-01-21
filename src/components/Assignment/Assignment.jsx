@@ -64,9 +64,9 @@ const Assignment = () => {
             
          <Navbar></Navbar> 
          
-         <p className="mb-4 mt-4 text-white text-lg text-center">Here you can find
+         <p className="mb-4 mt-4 text-white text-2xl text-center">Browse All Assignments 
          <br />
-          all the assignments</p>
+         Based On Difficulty</p>
           <div className="dropdown dropdown-bottom text-center mx-auto items-center justify-center flex">
   <div tabIndex={0} role="button" className="btn m-1">Difficulty Level</div>
   <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">

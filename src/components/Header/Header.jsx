@@ -8,9 +8,9 @@ import image6 from '../../assets/fotor-ai-202405134487.jpg'
 const Header = () => {
     return (
         <div>
-            <h3 className="text-center mt-4 mb-4 text-white text-2xl ">Look At Some Wonderful
+            <h3 className="text-center mt-4 mb-4 text-white text-2xl ">Explore Some Beautiful 
             <br />
-            Study Places</h3>
+            Study Destinations</h3>
            <div className="carousel w-full rounded-2xl">
   <div id="slide1" className="carousel-item relative w-full">
     <img src={image1} className="w-full" />
